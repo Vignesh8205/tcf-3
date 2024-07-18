@@ -3,10 +3,11 @@
 .container1 {
     max-width: 500px;
     margin: auto;
-    background: white;
+    background: rgb(237, 232, 232);
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+    box-shadow: 0px 0px 10px white;
 }
 
 .h21 {

@@ -733,6 +733,17 @@ h6 {
     width: 300px;
     height: 200px;
   } 
+
+  .head-ad{
+    height: 0px;
+    width: 0px;
+  }
+
+  .head-ad h1{
+    height: 0px;
+    width: 0px;
+  }
+
 }
 
 /*--------------------------------------------------------------
@@ -2163,8 +2174,14 @@ phone icon and whatsapp
 
 /* head - ad */
 .head-ad{
-  background-color: #fa057f;
+  background-color:#890045;
   
   height: 50px;
+}
+
+.head-ad-border{
+  padding: 2px;
+  border-right: 2px solid white;
+  color: white;
 }
 
