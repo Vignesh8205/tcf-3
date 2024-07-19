@@ -600,6 +600,9 @@ h6 {
   animation: subscription-loading 1s linear infinite;
 }
 
+
+
+
 @keyframes subscription-loading {
   0% {
     transform: rotate(0deg);
@@ -2175,20 +2178,42 @@ phone icon and whatsapp
 /* head - ad */
 .head-ad{
   background-color:#890045;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
   height: 50px;
 }
+
+.head-ad-border i{
+   color: yellow;
+  
+   
+} 
 
 .head-ad-border{
   padding: 2px;
   border-right: 2px solid white;
   color: white;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.head_icon{
+  display: flex;
+  justify-content: space-between;
+  
 }
 
+.head_icon a{
+  color: #e5f3f2;
+}
 
 /* carousel */
 .carousel-item {
   transition: transform 0.1s ease; /* Example of smooth transition */
   
 }
+
 
