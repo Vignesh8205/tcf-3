@@ -2185,3 +2185,10 @@ phone icon and whatsapp
   color: white;
 }
 
+
+/* carousel */
+.carousel-item {
+  transition: transform 0.1s ease; /* Example of smooth transition */
+  
+}
+
