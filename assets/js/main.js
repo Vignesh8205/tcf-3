@@ -1,5 +1,4 @@
 
-
 (function() {
   "use strict";
 
@@ -22,6 +21,7 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+
 
 
   /**
@@ -122,7 +122,7 @@ for (i = 0; i < acc.length; i++) {
   /**
    * Initiate glightbox
    */
-  const glightbox = GLightbox({
+  const glightbox = glightbox({
     selector: '.glightbox'
   });
 
@@ -260,7 +260,7 @@ function sendemail(){
         mobile.innerHTML="mobile number must be filled out";
           
           return false;
-      } else if (params.mobile_number.length == 10) {
+      } else if (params.mobile_number.length < 10) {
         mobile.innerHTML="mobile number must be at least 6 characters long";
           return false;
       }
@@ -312,7 +312,102 @@ function sendemail(){
 
 
 }
+function home_form () {
 
+    
+  
+  // Collect form data
+  var formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      Graduation_year: document.getElementById('Graduation_year').value,
+      mobile_number: document.getElementById('mobile_number').value,
+      job_title: document.getElementById('job_title').value
+  };
+
+  
+
+  var h_name=document.querySelector("#h_name")
+  var h_email=document.querySelector("#h_email")
+  var h_mobile=document.querySelector("#h_mobile")
+
+
+  function validation_home() {
+    
+
+    if (formData.name === "") {
+      h_name.innerHTML="Username must be filled out";
+      
+        return false;
+    } 
+    else if (formData.name.length < 3) {
+      h_name.innerHTML="Username must be at least 3 characters long";
+        return false;
+    }
+     // Email validation: must follow the email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(formData.email)) {
+      h_email.innerHTML="Please enter a valid email address";
+        
+        return false;
+    }
+
+    if (formData.mobile_number === "") {
+      h_mobile.innerHTML="mobile number must be filled out";
+        
+        return false;
+    } 
+     else if (formData.mobile_number .length < 10) {
+      h_mobile.innerHTML="mobile number must be at least 6 characters long";
+        return false;
+    }
+  
+
+    h_email.innerHTML=""
+    h_mobile.innerHTML=""
+    h_name.innerHTML=""
+  
+    return true
+
+
+  }
+
+
+
+    validation_home()
+  if (validation_home()) {
+    console.log("perfect");
+    // Log the collected form data (you can perform other actions here)
+  console.log('Form Data:', formData);
+
+    
+  }else{
+    console.log("not perfect");
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+ 
 
 
 

@@ -105,21 +105,25 @@
             <br>
             <div class="container1">
               <h2 class="h21">Contact Us</h2>
-              <form class="contact-form">
+              <div class="contact-form">
                   <label for="name">Name</label>
                   <input type="text" id="name" name="name" required>
+                  <p  style="color: red; font-size:10px; margin-top: -17px;" id="h_name"></p>
       
                   <label for="email">Email</label>
                   <input type="email" id="email" name="email" required>
+                  <p id="h_email"  style="color: red; font-size:10px; margin-top: -17px;"></p>
 
                   <label for="mobile_number">Graduation Year</label>
                   <input type="number" value="2002" id="Graduation_year" name="Graduation_year" required>
+                  
       
                   <label for="mobile_number">Mobile Number</label>
                   <input type="number" id="mobile_number" name="mobile_number" required>
+                  <p id="h_mobile"  style="color: red; font-size:10px; margin-top: -17px;" ></p>
 
                   <label for="mobile_number">Job Title</label>
-                  <select name="" id="">
+                  <select id="job_title" name="job_title">
                     <option value="QA Engineer">QA Engineer</option>
                     <option value="Devops Engineer">Devops Engineer</option>
                     <option value="FullStack Development">FullStack Development</option>
@@ -127,10 +131,10 @@
                     <option value="Front-End Development">Front-End Development</option>
                     <option value="Data Science">Data Science</option>
                     <option value="AWS Cloud Engineer">AWS Cloud Engineer</option>
-                  </select>
+                 </select>
                  <br>
-                  <button  class="buttonc1" type="submit">Send</button>
-              </form>
+                  <button  class="buttonc1" type="submit" onclick="home_form()" >Send </button>
+              </div>
           </div>
           </div>
         </div>
@@ -520,6 +524,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+ 
 
 
 
