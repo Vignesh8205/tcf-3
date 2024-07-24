@@ -2193,10 +2193,10 @@ phone icon and whatsapp
 
 .head-ad-border{
   padding: 2px;
-  border-right: 2px solid white;
+ 
   color: white;
   display: flex;
-  gap: 10px;
+  gap: 15px;
   align-items: center;
   justify-content: center;
 }
