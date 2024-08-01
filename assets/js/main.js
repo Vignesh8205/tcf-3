@@ -1,4 +1,5 @@
 
+
 (function() {
   "use strict";
 
@@ -21,7 +22,6 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
-
 
 
   /**
@@ -122,7 +122,7 @@ for (i = 0; i < acc.length; i++) {
   /**
    * Initiate glightbox
    */
-  const glightbox = glightbox({
+  const glightbox = GLightbox({
     selector: '.glightbox'
   });
 
@@ -221,7 +221,7 @@ function sendemail(){
 }
 
 
-      console.log("working");
+    
       let params={
         to_name:document.getElementById("name").value,
         from_name:document.getElementById("email").value,
@@ -260,7 +260,7 @@ function sendemail(){
         mobile.innerHTML="mobile number must be filled out";
           
           return false;
-      } else if (params.mobile_number.length < 10) {
+      } else if (params.mobile_number.length == 10) {
         mobile.innerHTML="mobile number must be at least 6 characters long";
           return false;
       }
@@ -279,6 +279,8 @@ function sendemail(){
 
   let  b=encrypt("wivzmgi_gmyrqu8");
   let  c=encrypt("xiqtpexi_nrnpvrt")
+
+
 
     emailjs.send(b,c,params).then((result) => {
       
@@ -300,22 +302,15 @@ function sendemail(){
      
   } else {
     
-    
-
   }  
 
 
-
-
-
-  
-
-
 }
+
+
+
 function home_form () {
 
-    
-  
   // Collect form data
   var formData = {
       name: document.getElementById('name').value,
@@ -324,17 +319,14 @@ function home_form () {
       mobile_number: document.getElementById('mobile_number').value,
       job_title: document.getElementById('job_title').value
   };
-
   
-
   var h_name=document.querySelector("#h_name")
   var h_email=document.querySelector("#h_email")
   var h_mobile=document.querySelector("#h_mobile")
-
-
+  
   function validation_home() {
     
-
+  
     if (formData.name === "") {
       h_name.innerHTML="Username must be filled out";
       
@@ -351,7 +343,7 @@ function home_form () {
         
         return false;
     }
-
+  
     if (formData.mobile_number === "") {
       h_mobile.innerHTML="mobile number must be filled out";
         
@@ -362,52 +354,47 @@ function home_form () {
         return false;
     }
   
-
+  
     h_email.innerHTML=""
     h_mobile.innerHTML=""
     h_name.innerHTML=""
   
     return true
-
-
+  
+  
   }
-
-
-
+  
+  
+  
     validation_home()
   if (validation_home()) {
-    console.log("perfect");
-    // Log the collected form data (you can perform other actions here)
-  console.log('Form Data:', formData);
-
-    
+  
+  
+  
+  const serviceID = 'service_ciunmq8';
+   const templateID = 'template_jnjlrnp';
+  
+   
+  
+   emailjs.send(serviceID, templateID, formData)
+    .then(() => {
+    let  value = 'Send Email';
+      alert(value)
+      alert('Sent!');
+    }, (err) => {
+      let value1 = ' not Send Email';
+  console.log(err);
+      alert(value1);
+    });
+   
   }else{
     console.log("not perfect");
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-
-
-
-
-
- 
+  
+  
+  
+  
+  }
 
 
 
