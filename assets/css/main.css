@@ -883,7 +883,7 @@ section,
   color: var(--default-color);
 }
 
-.hero video {
+.hero img {
   position: absolute;
   inset: 0;
   display: block;
