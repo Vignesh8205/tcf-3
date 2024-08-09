@@ -59,62 +59,40 @@ input:focus, textarea:focus {
 
 
 
-/* Container to maintain aspect ratio for portrait video */
-.portrait-video-container {
-    position: relative;
-    width: 100%;
-    padding-bottom: 177.78%; /* 9:16 aspect ratio (177.78% = 16/9 * 100) */
-    height: 0;
-    overflow: hidden;
-  }
-  
-  /* Make the video fill the container */
-  .portrait-video-container video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  /* Optional: Ensure the video does not overflow on smaller screens */
-  video {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  /* Media Query: Adjust the video size on smaller screens */
-  @media (max-width: 480px) {
-    video {
-      width: 100%;
-    }
-  }
+/* Basic Reset */
 
-  /* Tablets and smaller laptops */
-@media (max-width: 1024px) {
-    .laptop-video-container {
-      padding-bottom: 75%; /* Adjust aspect ratio for smaller screens */
-    }
-    video{
-        height: 300px;
-        width: 250px
-        ;
-    }
+
+.video-wrapper {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%; /* Ensure it doesn't exceed viewport height */
+  position: relative;
+ 
+}
+
+video {
+
+  width: 70%;
+  object-fit: cover; /* Cover the area while preserving aspect ratio */
+  display: block;
+  background-color: transparent;
+  border: none; 
+  display: block; /* Remove extra space below the video */
+
+}
+
+
+/* Ensure it behaves well on mobile */
+@media (max-width: 600px) {
+  .video-wrapper {
+      max-height: 100%; /* Ensure the video fits within the viewport height on small screens */
   }
-  
-  /* Large desktops and larger screens */
-  @media (min-width: 1200px) {
-    .laptop-video-container {
-      max-width: 80%; /* Limit video width on very large screens */
-      margin: 0 auto; /* Center the video on large screens */
-    }
-    video{
-        height: 300px;
-        width: 250px
-        ;
-    }
+  video{
+    height: 100%;
+    width: 100%;
   }
-  
+}
+
 
 
 @media (max-width: 600px) {
