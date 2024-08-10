@@ -67,19 +67,53 @@ input:focus, textarea:focus {
   max-width: 100%;
   max-height: 100%; /* Ensure it doesn't exceed viewport height */
   position: relative;
- 
+  display: grid;
+  place-items: center;
+  /* background-image: url('/assets/img/landscape/2.jpg');  */
 }
 
 video {
 
   width: 70%;
+  height: 500px;
   object-fit: cover; /* Cover the area while preserving aspect ratio */
   display: block;
   background-color: transparent;
   border: none; 
+ 
   display: block; /* Remove extra space below the video */
 
 }
+
+strong {
+    position: relative;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -0.125rem;
+      left: -0.5rem;
+      right: -0.5rem;
+      height: 0.75rem;
+      z-index: -1;
+      background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/664131/underline.svg');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+  
+  h3 > strong {
+    font-weight: bold;  
+  
+    &::after {
+    
+      bottom: -0.2rem;
+      height: 0.5rem;
+      left: -0.25rem;
+      right: -0.25rem;
+    }
+  }
+ 
 
 
 /* Ensure it behaves well on mobile */
@@ -90,6 +124,10 @@ video {
   video{
     height: 100%;
     width: 100%;
+  }
+  .row{
+    display: flex;
+    gap: 30px;
   }
 }
 
