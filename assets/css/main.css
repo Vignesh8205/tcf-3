@@ -714,6 +714,44 @@ h6 {
   bottom: 15px;
 }
 
+
+
+/* head - ad */
+.head-ad{
+  background-color:#890045;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 50px;
+}
+
+.head-ad-border i{
+   color: yellow;
+  
+   
+} 
+
+.head-ad-border{
+  padding: 2px;
+ 
+  color: white;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+}
+.head_icon{
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.head_icon a{
+  color: #e5f3f2;
+}
+
+
 /*--------------------------------------------------------------
 # Disable aos animation delay on mobile devices
 --------------------------------------------------------------*/
@@ -744,15 +782,31 @@ h6 {
   .head-ad{
     /* height: 0px;
     width: 0px; */
-    visibility: hidden;
+    /* visibility: hidden; */
+    display: none;
   }
 
   .head-ad h1{
     /* height: 0px;
     width: 0px; */
-      visibility: hidden;
+     display: none;
+      /* visibility: hidden; */
   }
+  .head-ad-container,.head-ad-container{
+    display: none !important;
+    /* visibility: hidden; */
+  }
+  
 
+}
+
+@media only  screen and (max-width:480px) {
+  .head-ad{
+    /* height: 0px;
+    width: 0px; */
+    /* visibility: hidden; */
+    display: none;
+  }
 }
 
 /*--------------------------------------------------------------
@@ -2194,40 +2248,7 @@ phone icon and whatsapp
 
 }
 
-/* head - ad */
-.head-ad{
-  background-color:#890045;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  height: 50px;
-}
 
-.head-ad-border i{
-   color: yellow;
-  
-   
-} 
-
-.head-ad-border{
-  padding: 2px;
- 
-  color: white;
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  justify-content: center;
-}
-.head_icon{
-  display: flex;
-  justify-content: space-between;
-  
-}
-
-.head_icon a{
-  color: #e5f3f2;
-}
 
 /* carousel */
 .carousel-item {
