@@ -2,7 +2,7 @@
 
 (function() {
   "use strict";
-
+jkjjllljjljl
 // intern faq
   var acc = document.getElementsByClassName("accordion1");
 var i;
