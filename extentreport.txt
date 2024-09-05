@@ -1,0 +1,125 @@
+package java_selenium;
+
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+public class extentreport_selenium  {
+
+    WebDriver driver;
+    ExtentReports extent;
+    ExtentTest test;
+
+    @BeforeClass
+    public void setUp() {
+        // Set up WebDriver
+        driver = new ChromeDriver();
+
+        // Initialize ExtentReports and attach the reporter
+        ExtentHtmlReporter htmlReporter = new ExtentHtmlReporter("extentReport.html");
+        htmlReporter.config().setDocumentTitle("Selenium Test Report");
+        htmlReporter.config().setReportName("TestNG Selenium Test");
+        htmlReporter.config().setTheme(Theme.STANDARD);
+
+        extent = new ExtentReports();
+        extent.attachReporter(htmlReporter);
+        extent.setSystemInfo("Host Name", "Localhost");
+        extent.setSystemInfo("Environment", "QA");
+        extent.setSystemInfo("User Name", "Your Name");
+    }
+
+    @BeforeMethod
+    public void beforeMethod() {
+        // Reset driver before each test
+        driver.get("https://www.tutorialspoint.com/selenium/practice/check-box.php");
+    }
+
+    @Test(priority = 1)
+    public void testExpandList() {
+        test = extent.createTest("Test Expand List", "Verify that expand button works");
+        WebElement expandButton = driver.findElement(By.cssSelector("#bs_1>.plus"));
+        expandButton.click();
+        test.log(Status.PASS, "Expand button clicked successfully.");
+    }
+
+    @Test(priority = 2)
+    public void testCheckParentChildCheckboxes() {
+        test = extent.createTest("Test Parent-Child Checkboxes", "Verify parent-child checkbox interaction");
+
+        WebElement parentCheckbox = driver.findElement(By.id("c_bs_1"));
+        WebElement childCheckbox = driver.findElement(By.xpath("//span[text()='Sub Level 2']/preceding-sibling::input[@type='checkbox']"));
+
+        // Click parent checkbox
+        parentCheckbox.click();
+        if (childCheckbox.isSelected()) {
+            test.log(Status.PASS, "Child checkbox selected when parent checkbox clicked.");
+        } else {
+            test.log(Status.FAIL, "Child checkbox not selected when parent checkbox clicked.");
+        }
+
+        // Uncheck child checkbox
+        childCheckbox.click();
+        if (!parentCheckbox.isSelected()) {
+            test.log(Status.PASS, "Parent checkbox unselected when child checkbox unchecked.");
+        } else {
+            test.log(Status.FAIL, "Parent checkbox still selected after child checkbox unchecked.");
+        }
+    }
+
+    @Test(priority = 3)
+    public void testRadioButtonSelection() {
+        test = extent.createTest("Test RadioButton Selection", "Verify radio button selection");
+
+        driver.get("https://www.tutorialspoint.com/selenium/practice/radio-button.php");
+
+        WebElement radioButton1 = driver.findElement(By.cssSelector("input[onclick='show2();']"));
+        WebElement radioButton2 = driver.findElement(By.cssSelector("input[onclick='show3();']"));
+
+        radioButton1.click();
+        if (radioButton1.isSelected() && !radioButton2.isSelected()) {
+            test.log(Status.PASS, "Radio button 1 selected, radio button 2 not selected.");
+        } else {
+            test.log(Status.FAIL, "Radio button selection failed.");
+        }
+    }
+
+    @Test(priority = 4)
+    public void testDisabledRadioButton() {
+        test = extent.createTest("Test Disabled RadioButton", "Verify disabled radio button behavior");
+
+        WebElement disabledRadioButton = driver.findElement(By.name("inlineRadioOptions"));
+        if (!disabledRadioButton.isEnabled()) {
+            test.log(Status.PASS, "Disabled radio button is not clickable.");
+        } else {
+            test.log(Status.FAIL, "Disabled radio button is clickable.");
+        }
+    }
+
+    @AfterMethod
+    public void afterMethod() {
+        // Capture test status for reporting
+        extent.flush();
+    }
+
+    @AfterClass
+    public void tearDown() {
+        driver.quit();
+        extent.flush(); // Ensure all reports are written to the file
+    }
+}
+
