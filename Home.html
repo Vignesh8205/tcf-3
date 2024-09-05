@@ -35,7 +35,7 @@
   <link href="assets/css/main.css" rel="stylesheet">
 
    <!-- email -->
-   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <link rel="stylesheet" href="assets/css/home.css">
 
     <!-- Font -->
@@ -43,6 +43,13 @@
     <!-- Remix Icon -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet"
 />
+
+<!-- card    -->
+
+<link rel="stylesheet" href="/assets/css/card,.css">
+
+
+
 </head>
 
 <body class="Home-page">
@@ -52,10 +59,10 @@
       <div class="row  ">
         <div class="col-lg-2 col-sm-2"><div class="head-ad-border"><i class="fa-solid fa-phone"></i><span> +91 90803 03212</span></div></div>
         <div class="col-lg-3 col-sm-2 "><div class="head-ad-border"><i class="fa-regular fa-envelope"></i> <span>tcftechnologies.contact@gmail.com </span></div></div>
-        <div class="col-lg-3 col-sm-2  "></div>
-        <div class="col-lg-1 col-sm-3  "></div>
-        <div class="col-lg-3 col-sm-1 ">
-          <div class="head_icon ">
+        <div class="col-lg-3 col-sm-2"></div>
+        <div class="col-lg-1 col-sm-3"></div>
+        <div class="col-lg-3 col-sm-1">
+          <div class="head_icon">
             <a  href="https://www.youtube.com/@tcftechnologys"><i class="bi bi-youtube"></i></a>
             <a href="https://www.facebook.com/tcftechnologys"><i class="bi bi-facebook"></i></a>
             <a href="https://www.instagram.com/tcf_technologies?utm_source=qr&igsh=MTIzeTRqbjhlOGtrYw=="><i class="bi bi-instagram"></i></a>
@@ -159,11 +166,6 @@
         </div>
       </div>
     
-      <!-- <video autoplay muted loop id="myVideo">
-        <source src="/assets/img/videos-bg/selected.mp4" type="video/mp4">
-      </video> -->
-      <!-- <img src="/assets/img/videos-bg/pexels-francesco-ungaro-281260.jpg" alt=""> -->
-      
 
       
     </section>
@@ -225,8 +227,6 @@
 
           <div  class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
             <img src="assets/TCFIMAgwes/group pic.jpeg"  class="img-fluid" >
-           
-
           </div>
 
           <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
@@ -303,68 +303,94 @@
 
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
-            <div class="course-item">
-              <img src="assets/img/sftwaretest.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">Software Testing</p>
-                  <p class="price">  ₹30K </p>
-                </div>
-                <h3><a href="course-details-testing.html">Automation Testing</a></h3>
-                <p class="description">Automation testing uses automated tools to execute tests and validate software functionality, improving efficiency and accuracy. It reduces manual effort and supports continuous integration and delivery</p>
+                <div class="card1">
+                  <img src="assets/img/sftwaretest.jpg" alt="Profile Image" class="card-img">
+                  <div class="card-content">
+                      <h2 class="card-title">Automation Testing</h2>
+                      <p class="card-description">Automation testing uses automated tools to execute tests and validate software functionality, improving efficiency and accuracy. It reduces manual effort and supports continuous integration and delivery</p>
+                      <div class="card-rating">
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="star">★</span>
+                          <span class="rating-count">(25,145)</span>
+                      </div>
+                      <button class="card-button"> <a href="course-details-testing.html"> Enroll Now</a>  </button>
+                  </div>
               </div>
-            </div>
+            
           </div> <!-- End Course Item-->
 
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="course-item">
-              <img src="assets/img/mernstack.jpg" class="img-fluid"  alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">FullStack</p>
-                  <p class="price"> ₹35K</p>
-                </div>
 
-                <h3><a href="mernstack.html">MERN FullStack</a></h3>
-                <p class="description">MERN (MongoDB, Express.js, React, Node.js) full-stack development is a JavaScript-based framework for building dynamic web applications. </p>
-                
+
+
+
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card1">
+              <img src="assets/img/mernstack.jpg" alt="Profile Image" class="card-img">
+              <div class="card-content">
+                  <h2 class="card-title">MERN FullStack</h2>
+                  <p class="card-description">MERN (MongoDB, Express.js, React, Node.js) full-stack development is a JavaScript-based framework for building dynamic web applications.</p>
+                  <div class="card-rating">
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="rating-count">(25,145)</span>
+                  </div>
+                  <button class="card-button"> <a href="mernstack.html"> Enroll Now</a>  </button>
               </div>
-            </div>
+          </div>
+          
           </div> <!-- End Course Item-->
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
-            <div class="course-item">
-              <img src="assets/img/javafullstack.jpg" class="img-fluid" alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">FullStack</p>
-                  <p class="price">₹35k</p>
-                </div>
-
-                <h3><a href="course-details.html">JAVA FullStack</a></h3>
-                <p class="description">
-                  Java Full Stack Development involves mastering both front-end (HTML, CSS, JavaScript, React/Angular/Vue) and back-end (Java, Spring Boot, Hibernate) technologies to build robust web applications.</p>
-              
+            
+          
+            <div class="card1">
+              <img src="assets/img/mernstack.jpg" alt="Profile Image" class="card-img">
+              <div class="card-content">
+                  <h2 class="card-title">JAVA FullStack</h2>
+                  <p class="card-description"> Java Full Stack Development involves mastering both front-end (HTML, CSS, JavaScript, React/Angular/Vue) and back-end (Java, Spring Boot, Hibernate) technologies to build robust web applications.</p>
+                  <div class="card-rating">
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="rating-count">(25,145)</span>
+                  </div>
+                  <button class="card-button"> <a href="course-details.html"> Enroll Now</a>  </button>
               </div>
-            </div>
+          </div>
+
+
           </div> <!-- End Course Item-->
         </div>
 <br>
         <div class="row">
           
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
-            <div class="course-item">
-              <img src="assets/img/javacard.jpg" class="img-fluid"  alt="...">
-              <div class="course-content">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                  <p class="category">JAVA</p>
-                  <p class="price"> ₹10K</p>
-                </div>
-
-                <h3><a href="course-details.html">Core-JAVA</a></h3>
-                <p class="description">Core Java encompasses essential concepts and libraries for object-oriented programming, platform independence, multithreading, and robust application development. </p>
+          <div class="col-lg-4 col-md-6  d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+          
+            <div class="card1">
+              <img src="assets/img/mernstack.jpg" alt="Profile Image" class="card-img">
+              <div class="card-content">
+                  <h2 class="card-title">JAVA</h2>
+                  <p class="card-description"> Core Java encompasses essential concepts and libraries for object-oriented programming, platform independence, multithreading, and robust application development.</p>
+                  <div class="card-rating">
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="star">★</span>
+                      <span class="rating-count">(25,145)</span>
+                  </div>
+                  <button class="card-button"> <a href="course-details.html"> Enroll Now</a>  </button>
               </div>
-            </div>
+          </div>
           </div> 
         </div>
 
