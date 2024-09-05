@@ -115,11 +115,13 @@ public class extentreport_selenium  {
         // Capture test status for reporting
         extent.flush();
     }
+    
 
     @AfterClass
     public void tearDown() {
         driver.quit();
-        extent.flush(); // Ensure all reports are written to the file
+        extent.flush();
+       // Ensure all reports are written to the file
     }
 }
 
