@@ -1,0 +1,158 @@
+package java_selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import java.util.regex.Pattern;
+
+public class Text_box_postive_negative {
+
+    private WebDriver driver;
+
+    @BeforeMethod
+    public void setup() {
+        // Set the path to your ChromeDriver executable (ensure this path is correct)
+//        System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+        driver = new ChromeDriver();
+    }
+
+    @Test
+    public void testTextBoxValidationPositive() {
+        // Navigate to the URL
+        driver.get("https://www.tutorialspoint.com/selenium/practice/text-box.php");
+
+        // Define expected values (Positive Test Case)
+        String fullName = "Raj Reddy";
+        String email = "raj@gmail.com";
+        String address = "123 street, near park, city, state";
+        String password = "123345";
+
+        // Fill in text fields
+        WebElement fullNameField = driver.findElement(By.id("fullname"));
+        fullNameField.sendKeys(fullName);
+
+        WebElement emailField = driver.findElement(By.id("email"));
+        emailField.sendKeys(email);
+
+        WebElement addressField = driver.findElement(By.id("address"));
+        addressField.sendKeys(address);
+
+        WebElement passwordField = driver.findElement(By.id("password"));
+        passwordField.sendKeys(password);
+
+        WebElement submitButton = driver.findElement(By.xpath("//input[@value='Submit']"));
+
+        // Validate the form fields
+        validateFullName(fullNameField);
+        validateEmail(emailField);
+        validateAddress(addressField);
+        validateSubmitButton(submitButton);
+
+        // Click the submit button
+        submitButton.click();
+    }
+
+    @Test
+    public void testTextBoxValidationNegative() {
+        // Navigate to the URL
+        driver.get("https://www.tutorialspoint.com/selenium/practice/text-box.php");
+
+        // Define invalid values (Negative Test Case)
+        String fullName = "Rr";  // Too short
+        String email = "raj.com"; // Invalid email format
+        String address = "123"; // Too short address
+        String password = "";   // Empty password
+
+        // Fill in text fields
+        WebElement fullNameField = driver.findElement(By.id("fullname"));
+        fullNameField.sendKeys(fullName);
+
+        WebElement emailField = driver.findElement(By.id("email"));
+        emailField.sendKeys(email);
+
+        WebElement addressField = driver.findElement(By.id("address"));
+        addressField.sendKeys(address);
+
+        WebElement passwordField = driver.findElement(By.id("password"));
+        passwordField.sendKeys(password);
+
+        WebElement submitButton = driver.findElement(By.xpath("//input[@value='Submit']"));
+
+        // Validate the form fields
+        validateFullName(fullNameField, true);
+        validateEmail(emailField, true);
+        validateAddress(addressField, true);
+        validateSubmitButton(submitButton, true);
+    }
+
+    private void validateFullName(WebElement field) {
+        String value = field.getAttribute("value");
+        Assert.assertTrue(value.length() >= 3, "Full Name should be at least 3 characters long.");
+    }
+
+    private void validateFullName(WebElement field, boolean isNegative) {
+        if (isNegative) {
+            String value = field.getAttribute("value");
+            Assert.assertTrue(value.length() < 3, "Full Name should fail for being less than 3 characters.");
+            // Check for error border color (assuming it turns red on error)
+            String borderColor = field.getCssValue("border-color");
+            Assert.assertEquals(borderColor, "rgb(255, 0, 0)", "Error border color should be red.");
+        }
+    }
+
+    private void validateEmail(WebElement field) {
+        String value = field.getAttribute("value");
+        // Regex pattern for basic email validation
+        String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+        Pattern pattern = Pattern.compile(emailPattern);
+        Assert.assertTrue(pattern.matcher(value).matches(), "Email format is incorrect.");
+    }
+
+    private void validateEmail(WebElement field, boolean isNegative) {
+        if (isNegative) {
+            String value = field.getAttribute("value");
+            String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
+            Pattern pattern = Pattern.compile(emailPattern);
+            Assert.assertFalse(pattern.matcher(value).matches(), "Email format should fail for invalid input.");
+            // Check for error border color
+            String borderColor = field.getCssValue("border-color");
+            Assert.assertEquals(borderColor, "rgb(255, 0, 0)", "Error border color should be red.");
+        }
+    }
+
+    private void validateAddress(WebElement field) {
+        String value = field.getAttribute("value");
+        Assert.assertTrue(value.length() >= 20, "Address should be at least 20 characters long.");
+    }
+
+    private void validateAddress(WebElement field, boolean isNegative) {
+        if (isNegative) {
+            String value = field.getAttribute("value");
+            Assert.assertTrue(value.length() < 20, "Address should fail for being less than 20 characters.");
+            // Check for error border color
+            String borderColor = field.getCssValue("border-color");
+            Assert.assertEquals(borderColor, "rgb(255, 0, 0)", "Error border color should be red.");
+        }
+    }
+
+    private void validateSubmitButton(WebElement button) {
+        Assert.assertTrue(button.isEnabled(), "Submit button should be clickable.");
+    }
+
+    private void validateSubmitButton(WebElement button, boolean isNegative) {
+        if (isNegative) {
+            Assert.assertFalse(button.isEnabled(), "Submit button should not be clickable due to invalid inputs.");
+        }
+    }
+
+    @AfterMethod
+    public void close() {
+        // Quit the WebDriver
+        driver.quit();
+    }
+}
