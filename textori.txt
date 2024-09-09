@@ -1,0 +1,97 @@
+package java_selenium;
+
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
+
+public class Text {
+
+    WebDriver driver;
+
+    @BeforeClass
+    public void setup() {
+        // Set up ChromeDriver or any other driver
+        driver = new ChromeDriver();
+    }
+
+    @Test(priority = 1)
+    public void testExpandList() {
+        // Go to the checkbox testing page
+        driver.get("https://www.tutorialspoint.com/selenium/practice/check-box.php");
+
+        // Find the expand button
+        WebElement expandButton = driver.findElement(By.cssSelector("#bs_1 > .plus"));
+
+        // Verify that the "Expand" button is present and clickable
+        Assert.assertTrue(expandButton.isDisplayed(), "Expand button should be visible.");
+        Assert.assertTrue(expandButton.isEnabled(), "Expand button should be clickable.");
+
+        // Click the expand button
+        expandButton.click();
+    }
+
+    @Test(priority = 2)
+    public void testCheckParentChildCheckboxes() {
+        // Go to the checkbox testing page
+        driver.get("https://www.tutorialspoint.com/selenium/practice/check-box.php");
+
+        // Find the parent and child checkboxes
+        WebElement parentCheckbox = driver.findElement(By.id("c_bs_1"));
+        WebElement childCheckbox = driver.findElement(By.xpath("//ul[@id='bs_1']/li[1]/ul/li[1]/input"));
+
+        // Click parent checkbox
+        parentCheckbox.click();
+
+        // Verify that child checkbox is selected when parent checkbox is clicked
+        Assert.assertTrue(childCheckbox.isSelected(), "Child checkbox should be selected when parent checkbox is clicked.");
+
+        // Uncheck child checkbox
+        childCheckbox.click();
+
+        // Verify that parent checkbox is unchecked when child checkbox is unchecked
+        Assert.assertFalse(parentCheckbox.isSelected(), "Parent checkbox should not be selected when child checkbox is unchecked.");
+    }
+
+    @Test(priority = 3)
+    public void testRadioButtonSelection() {
+        // Go to the radio button testing page
+        driver.get("https://www.tutorialspoint.com/selenium/practice/radio-button.php");
+
+        // Find the radio buttons
+        WebElement radioButton1 = driver.findElement(By.cssSelector("input[onclick='show2();']"));
+        WebElement radioButton2 = driver.findElement(By.cssSelector("input[onclick='show3();']"));
+
+        // Select the first radio button
+        radioButton1.click();
+
+        // Verify that radioButton1 is selected and radioButton2 is not
+        Assert.assertTrue(radioButton1.isSelected(), "Radio button 1 should be selected.");
+        Assert.assertFalse(radioButton2.isSelected(), "Radio button 2 should not be selected.");
+    }
+
+    @Test(priority = 4)
+    public void testDisabledRadioButton() {
+        // Go to the radio button testing page
+        driver.get("https://www.tutorialspoint.com/selenium/practice/radio-button.php");
+
+        // Find the disabled radio button
+        WebElement disabledRadioButton = driver.findElement(By.name("inlineRadioOptions"));
+
+        // Verify that the disabled radio button is not clickable
+        Assert.assertFalse(disabledRadioButton.isEnabled(), "Disabled radio button should not be clickable.");
+    }
+
+    @AfterClass
+    public void close() {
+        // Close the browser after tests
+        driver.quit();
+    }
+}
+
