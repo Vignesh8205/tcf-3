@@ -1,0 +1,140 @@
+
+package java_selenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
+import java.util.regex.Pattern;
+
+public class textbox2positivenegative {
+
+    private WebDriver driver;
+
+    @BeforeMethod
+    public void setup() {
+    	
+           driver = new ChromeDriver();
+    }
+
+    
+    @Test
+    public void testTextBoxValidationNegative() {
+        // Navigate to the URL
+    	    	
+        driver.get("https://www.tutorialspoint.com/selenium/practice/text-box.php");
+
+        // Define invalid values (Negative Test Case)
+        String fullName = "r";  // Too short
+        String email = "raj.com"; // Invalid email format
+        String address = "123"; // Too short address
+        String password = "";   // Empty password
+
+        // Fill in text fields
+        WebElement fullNameField = driver.findElement(By.id("fullname"));
+        fullNameField.sendKeys(fullName);
+
+        WebElement emailField = driver.findElement(By.id("email"));
+        emailField.sendKeys(email);
+
+        WebElement addressField = driver.findElement(By.id("address"));
+        addressField.sendKeys(address);
+
+        WebElement passwordField = driver.findElement(By.id("password"));
+        passwordField.sendKeys(password);
+
+        WebElement submitButton = driver.findElement(By.xpath("//input[@value='Submit']"));
+
+        // vaidate the button next click
+        validateSubmitButton(submitButton, true);
+        submitButton.click();
+        
+        // wait 
+        wait(5000);
+        
+       
+        
+        // Validate the form fields
+        validateFullName(fullNameField, true);
+        validateEmail(emailField, true);
+        validateAddress(addressField, true);
+        validatePassword(passwordField,true);
+        
+        
+    }
+
+   
+
+    private void validateFullName(WebElement field, boolean isNegative) {
+        if (isNegative) {
+            // Check for error border color (assuming it turns red on error)
+            String borderColor = field.getCssValue("border-color");
+            System.out.println(borderColor);
+           Assert.assertEquals(borderColor, "rgb(255, 0, 0)", "Error border color should be red.");
+        }else {
+//        	String borderColor = field.getCssValue("border-color");
+//            System.out.println(borderColor);
+        	System.out.println("validateFullName");  
+        }
+    }
+
+  
+
+    private void validateEmail(WebElement field, boolean isNegative) {
+        if (isNegative) {
+            String borderColor = field.getCssValue("border-color");
+            System.out.println(borderColor);
+            Assert.assertEquals(borderColor, "rgb(255, 0, 0)", "Error border color should be red.");
+        }
+    }
+
+ 
+
+    private void validateAddress(WebElement field, boolean isNegative) {
+        if (isNegative) {
+            String borderColor = field.getCssValue("border-color");
+            System.out.println(borderColor);
+            Assert.assertEquals(borderColor, "rgb(255, 0, 0)", "Error border color should be red.");
+        }
+    }
+    
+    
+    private void validatePassword(WebElement field, boolean isNegative) {
+        if (isNegative) {
+            String borderColor = field.getCssValue("border-color");
+            System.out.println(borderColor);
+            Assert.assertEquals(borderColor, "rgb(255, 0, 0)", "Error border color should be red.");
+        }
+    }
+    
+   
+
+    private void validateSubmitButton(WebElement button, boolean isNegative) {
+        if (isNegative) {
+            Assert.assertTrue(button.isEnabled(), "Submit button should not be clickable due to invalid inputs.");
+        }
+    }
+    
+    
+    
+    private void wait(int milisecs) {
+    	try {
+			Thread.sleep(milisecs);
+		} catch (InterruptedException e) {
+		
+			e.printStackTrace();
+		}
+    }
+
+    
+    @AfterMethod
+    public void close() {
+        // Quit the WebDriver
+//        driver.quit();
+    }
+}
+
